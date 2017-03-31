@@ -39,6 +39,12 @@ const Sidebar = (props) => {
           })
         }
       </ul>
+      <hr/>
+      <ul className="list-unstyled">
+        <li className="playlist-item menu-item">
+          <Link to="/dummylyrics">Lyrics</Link> 
+        </li>
+      </ul>
     </sidebar>
   );
 }
