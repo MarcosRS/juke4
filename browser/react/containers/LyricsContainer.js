@@ -48,6 +48,10 @@ export default class extends Component {
         .then(response => {
           const setLyricsAction = setLyrics(response.data.lyric);
           store.dispatch(setLyricsAction);           
+        })
+        .catch(function(){
+          const setLyricsAction = setLyrics('Song not Found')
+          store.dispatch(setLyricsAction);  
         });
 
     }
