@@ -3,6 +3,7 @@ import Lyrics from '../components/Lyrics';
 import axios from 'axios';
 
 import {setLyrics} from '../action-creators/lyrics';
+import {fetchLyrics} from '../action-creators/lyrics';
 import store from '../store';
 
 export default class extends Component {
@@ -39,23 +40,31 @@ export default class extends Component {
     this.setState({ songQuery: song });
   }
 
-  handleSubmit(event) {
+  // handleSubmit(event) {
 
+  //   event.preventDefault();
+  //   if (this.state.artistQuery && this.state.songQuery) {
+
+  //     axios.get(`/api/lyrics/${this.state.artistQuery}/${this.state.songQuery}`)
+  //       .then(response => {
+  //         const setLyricsAction = setLyrics(response.data.lyric);
+  //         store.dispatch(setLyricsAction);           
+  //       })
+  //       .catch(function(){
+  //         const setLyricsAction = setLyrics('Song not Found')
+  //         store.dispatch(setLyricsAction);  
+  //       });
+
+  //   }
+
+  // }
+
+
+  handleSubmit(event) {
     event.preventDefault();
     if (this.state.artistQuery && this.state.songQuery) {
-
-      axios.get(`/api/lyrics/${this.state.artistQuery}/${this.state.songQuery}`)
-        .then(response => {
-          const setLyricsAction = setLyrics(response.data.lyric);
-          store.dispatch(setLyricsAction);           
-        })
-        .catch(function(){
-          const setLyricsAction = setLyrics('Song not Found')
-          store.dispatch(setLyricsAction);  
-        });
-
+      store.dispatch(fetchLyrics(this.state.artistQuery, this.state.songQuery));
     }
-
   }
 
   render() {
