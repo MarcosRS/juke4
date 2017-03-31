@@ -1,6 +1,4 @@
 import {createStore} from 'redux'
-import reducer from './reducers/root-reducer'
+import reducer from './reducers/lyrics-reducer'
 
-let store = createStore(reducer)
-
-export default store
+export default createStore(reducer)
